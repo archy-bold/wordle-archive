@@ -4,7 +4,7 @@
     div.setAttribute('style', 'position:absolute;top:0;right:0;bottom:0;left:0;z-index:10000;background:white;');
     var btnClick = "var str = window.document.getElementById('gameStateInput').value;"
         + "try{"
-        + "var json = JSON.parse(str);"
+        + "var json = JSON.parse(atob(str));"
         + "if (json.gameState == null || json.statistics == null) throw 'err';"
         + "window.localStorage.setItem('gameState', JSON.stringify(json.gameState));"
         + "window.localStorage.setItem('statistics', JSON.stringify(json.statistics));"
