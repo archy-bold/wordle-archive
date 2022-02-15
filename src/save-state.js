@@ -6,5 +6,7 @@
     b.style.overflow = 'auto';
     b.style.whiteSpace = 'pre-wrap';
     b.style.wordBreak = 'break-word';
-    b.appendChild(a.createTextNode(btoa(JSON.stringify({gameState:JSON.parse(window.localStorage.getItem('gameState')),statistics:JSON.parse(window.localStorage.getItem('statistics'))}))));
+    var stateKey = window.localStorage.hasOwnProperty('nyt-wordle-state') ? 'nyt-wordle-state' : 'gameState';
+    var statsKey = window.localStorage.hasOwnProperty('nyt-wordle-statistics') ? 'nyt-wordle-statistics' : 'statistics';
+    b.appendChild(a.createTextNode(btoa(JSON.stringify({gameState:JSON.parse(window.localStorage.getItem(stateKey)),statistics:JSON.parse(window.localStorage.getItem(statsKey))}))));
 })();
