@@ -6,5 +6,20 @@
     b.style.overflow = 'auto';
     b.style.whiteSpace = 'pre-wrap';
     b.style.wordBreak = 'break-word';
-    b.appendChild(a.createTextNode(btoa(escape(JSON.stringify(window.localStorage)))));
+    var c = '';
+    if (window.localStorage.hasOwnProperty('nyt-fontFace')) {
+        // Remove the cached fonts on nyt wordle
+        var filteredObj = {};
+        Object.keys(window.localStorage)
+            .filter(function (key) {
+                return key.indexOf('nyt-font') !== 0;
+            })
+            .map(function (key) {
+                filteredObj[key] = localStorage.getItem(key);
+            });
+        c = btoa(escape(JSON.stringify(filteredObj)));
+    } else {
+        c = btoa(escape(JSON.stringify(window.localStorage)));
+    }
+    b.appendChild(a.createTextNode(c));
 })();
