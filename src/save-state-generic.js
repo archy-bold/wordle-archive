@@ -6,5 +6,5 @@
     b.style.overflow = 'auto';
     b.style.whiteSpace = 'pre-wrap';
     b.style.wordBreak = 'break-word';
-    b.appendChild(a.createTextNode(btoa(JSON.stringify(window.localStorage))));
+    b.appendChild(a.createTextNode(btoa(escape(JSON.stringify(window.localStorage)))));
 })();
