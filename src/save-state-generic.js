@@ -6,20 +6,18 @@
     b.style.overflow = 'auto';
     b.style.whiteSpace = 'pre-wrap';
     b.style.wordBreak = 'break-word';
-    var c = '';
-    if (window.localStorage.hasOwnProperty('nyt-fontFace')) {
-        // Remove the cached fonts on nyt wordle
-        var filteredObj = {};
-        Object.keys(window.localStorage)
-            .filter(function (key) {
-                return key.indexOf('nyt-font') !== 0;
-            })
-            .map(function (key) {
-                filteredObj[key] = localStorage.getItem(key);
-            });
-        c = btoa(escape(JSON.stringify(filteredObj)));
-    } else {
-        c = btoa(escape(JSON.stringify(window.localStorage)));
-    }
+    // Strip cached fonts, ad plugin caching etc
+    var filteredObj = {};
+    Object.keys(window.localStorage)
+        .filter(function (key) {
+            return key.indexOf('nyt-font') !== 0
+                && key.indexOf('criteo') !== 0
+                && key.indexOf('font_css_cache') !== 0
+                && key.indexOf('permutive') !== 0;
+        })
+        .map(function (key) {
+            filteredObj[key] = localStorage.getItem(key);
+        });
+    var c = btoa(escape(JSON.stringify(filteredObj)));
     b.appendChild(a.createTextNode(c));
 })();
