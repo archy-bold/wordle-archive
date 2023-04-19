@@ -6,7 +6,7 @@
     b.style.overflow = 'auto';
     b.style.whiteSpace = 'pre-wrap';
     b.style.wordBreak = 'break-word';
-    // Strip cached fonts, ad plugin caching etc
+    /* Strip cached fonts, ad plugin caching etc */
     var filteredObj = {};
     Object.keys(window.localStorage)
         .filter(function (key) {
