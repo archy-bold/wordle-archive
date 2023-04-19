@@ -18,7 +18,10 @@
                 && key.indexOf('adagio') !== 0;
         })
         .map(function (key) {
-            filteredObj[key] = localStorage.getItem(key);
+            var d = localStorage.getItem(key);
+            if (d.length < 10000) {
+                filteredObj[key] = d;
+            }
         });
     var c = btoa(escape(JSON.stringify(filteredObj)));
     b.appendChild(a.createTextNode(c));
