@@ -11,9 +11,11 @@
     Object.keys(window.localStorage)
         .filter(function (key) {
             return key.indexOf('nyt-font') !== 0
+                && key.indexOf('gdpr') !== 0
                 && key.indexOf('criteo') !== 0
                 && key.indexOf('font_css_cache') !== 0
-                && key.indexOf('permutive') !== 0;
+                && key.indexOf('permutive') !== 0
+                && key.indexOf('adagio') !== 0;
         })
         .map(function (key) {
             filteredObj[key] = localStorage.getItem(key);
