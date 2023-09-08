@@ -1,7 +1,7 @@
 (function() {
     var div = document.createElement('div');
     div.setAttribute('id', 'inputDiv');
-    div.setAttribute('style', 'position:absolute;top:0;right:0;bottom:0;left:0;z-index:10000;background:white;');
+    div.setAttribute('style', 'position:absolute;top:0;right:0;bottom:0;left:0;z-index:10000;z-index:9999999999;background:white;');
     var btnClick = "var str = window.document.getElementById('gameStateInput').value;"
         + "try{"
         + "var json = JSON.parse(unescape(atob(str)));"
